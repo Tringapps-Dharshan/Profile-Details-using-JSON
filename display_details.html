@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Your Details</title>
+    </head>
+    <style>
+        table{
+            font-family: sans-serif;
+        }
+    </style>
+    <body bgcolor="#333">
+        <script>
+            var image=localStorage.getItem('img');
+            var intern=localStorage.getItem('detailsall');
+            var user = JSON.parse(localStorage.getItem('det'));
+            document.write(`
+                    <table border="1" style="border-collapse:collapse;" cellpadding="15px" align="center">
+                        <tr>
+                            <td bgcolor="seablue">Profile : </td>
+                            <td bgcolor="lightgreen"><img src=${image} style="border-radius:5%"; width="20%" height="20%"></td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="lightgreen">Name : </td>
+                            <td bgcolor="seablue">${user.name}</td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="seablue">Age : </td>
+                            <td bgcolor="lightgreen">${user.age}</td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="lightgreen">Address : </td>
+                            <td bgcolor="seablue">${user.address}</td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="seablue">Gender : </td>
+                            <td bgcolor="lightgreen">${user.gender}</td>
+                        </tr>
+                    </table>
+            `);
+        </script>
+    </body>
+</html>

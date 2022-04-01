@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <title>Profile Details</title>
+    </head>
+    <style>
+        header{
+            color: #fff;
+            padding: 10px;
+        }
+        section{
+            padding: 10px;
+            background-color: aliceblue;
+            margin: 20px;
+            border-radius: 10px;
+        }
+        label{
+            padding: 20px;
+        }
+        input[type="submit"]
+        {
+            padding: 10px 20px;
+        }
+        span{
+            color: red;
+        }
+    </style>
+    <body bgcolor="#333">
+        <header>
+            <h1 align="center">Profile Details</h1>
+        </header><hr color="white">
+        <section>
+            <form action="display_details.html">
+                <table cellspacing="20" align="center">
+                        <tr>
+                        <td><label for="dpmine">Profile Pic <span>*</span></label></td>
+                        <td><input type="file" id="dpmine" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="details">Upload Details <span>*</span></label></td>
+                        <td><input type="file" id="file" required></td>
+                    </tr>
+                    <tr align="center">
+                        <td colspan="2">
+                            <input type="submit" value="Submit" onclick="photo();">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </section>
+        <script>
+           function photo()
+           {
+            var img;
+            var preview = document.getElementById("dpmine").files[0].name;
+            localStorage.setItem("img", preview)
+            document.getElementById('dpmine').onchange = function(evt) {
+            var tgt = evt.target || window.event.srcElement,
+                files = tgt.files;
+
+            // FileReader support
+            if (FileReader && files && files.length) {
+                var fr = new FileReader();
+                fr.onload = function() {
+                    localStorage.setItem("Image", fr.result)
+
+                }
+                fr.readAsDataURL(files[0]);
+            }
+        }
+           }     
+            document.getElementById("file").addEventListener("change", function() {
+            var file_to_read = document.getElementById("file").files[0];
+            var fileread = new FileReader();
+            fileread.onload = function(e) {
+            var content = e.target.result;
+            var intern = JSON.parse(content);  
+            localStorage.setItem('det', JSON.stringify(intern));
+            localStorage.setItem('url',url);
+        };
+        fileread.readAsText(file_to_read);
+        });
+        </script>
+    </body>
+</html>
